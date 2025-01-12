@@ -9,19 +9,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-interface Props {
-  params: {
-    handle: string;
-  };
-  searchParams: {
-    page?: string;
-  };
-}
+type SearchParams = Promise<{
+  page?: string;
+}>;
+
+type Params = Promise<{
+  handle: string;
+}>;
 
 const PRODUCTS_PER_PAGE = 4;
 
-export async function generateMetadata({ params }: Props) {
-  const { handle } = await params;
+export async function generateMetadata(props: {
+  params: Params;
+  searchParams: SearchParams;
+}) {
+  const { handle } = await props.params;
   const { data } = await getClient().query<GetCollectionSeoQuery>({
     query: GET_COLLECTION_SEO,
     variables: {
@@ -39,9 +41,12 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-export default async function CollectionPage({ params, searchParams }: Props) {
-  const { handle } = await params;
-  const { page } = await searchParams;
+export default async function CollectionPage(props: {
+  params: Params;
+  searchParams: SearchParams;
+}) {
+  const { handle } = await props.params;
+  const { page } = await props.searchParams;
   const currentPage = Number(page) || 1;
   const skip = (currentPage - 1) * PRODUCTS_PER_PAGE;
 

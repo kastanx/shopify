@@ -7,14 +7,12 @@ import { formatPrice } from "@/util/formatPrice";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-interface Props {
-  params: {
-    handle: string;
-  };
-}
+type Params = Promise<{
+  handle: string;
+}>;
 
-export async function generateMetadata({ params }: Props) {
-  const { handle } = await params;
+export async function generateMetadata(props: { params: Params }) {
+  const { handle } = await props.params;
   const { data } = await getClient().query<GetProductSeoQuery>({
     query: GET_PRODUCT_SEO,
     variables: {
@@ -30,8 +28,8 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-export default async function ProductPage({ params }: Props) {
-  const { handle } = await params;
+export default async function ProductPage(props: { params: Params }) {
+  const { handle } = await props.params;
   const { data } = await getClient().query<GetProductQuery>({
     query: GET_PRODUCT,
     variables: {
