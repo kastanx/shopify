@@ -75,6 +75,7 @@ export const GET_COLLECTION = gql`
 export const GET_COLLECTION_SEO = gql`
   query GetCollectionSEO($handle: String!) {
     collection(handle: $handle) {
+      id
       seo {
         description
         title
@@ -126,6 +127,7 @@ export const GET_PRODUCT = gql`
 export const GET_PRODUCT_SEO = gql`
   query GetProductSEO($handle: String!) {
     product(handle: $handle) {
+      id
       seo {
         description
         title

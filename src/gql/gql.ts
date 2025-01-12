@@ -16,9 +16,9 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
 const documents = {
     "\n  query GetCollections {\n    collections(first: 10) {\n      edges {\n        node {\n          id\n          title\n          handle\n          description\n          image {\n            url\n            altText\n          }\n          products(first: 1) {\n            edges {\n              node {\n                featuredImage {\n                  url\n                  altText\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n": types.GetCollectionsDocument,
     "\n  query GetCollection($handle: String!, $first: Int!, $after: String) {\n    collection(handle: $handle) {\n      id\n      title\n      description\n      products(first: $first, after: $after) {\n        edges {\n          cursor\n          node {\n            id\n            title\n            handle\n            description\n            featuredImage {\n              url\n              altText\n            }\n            priceRange {\n              minVariantPrice {\n                amount\n                currencyCode\n              }\n            }\n            compareAtPriceRange {\n              minVariantPrice {\n                amount\n                currencyCode\n              }\n            }\n          }\n        }\n        pageInfo {\n          hasNextPage\n          hasPreviousPage\n          startCursor\n          endCursor\n        }\n      }\n    }\n  }\n": types.GetCollectionDocument,
-    "\n  query GetCollectionSEO($handle: String!) {\n    collection(handle: $handle) {\n      seo {\n        description\n        title\n      }\n      description\n      title\n    }\n  }\n": types.GetCollectionSeoDocument,
+    "\n  query GetCollectionSEO($handle: String!) {\n    collection(handle: $handle) {\n      id\n      seo {\n        description\n        title\n      }\n      description\n      title\n    }\n  }\n": types.GetCollectionSeoDocument,
     "\n  query GetProduct($handle: String!) {\n    product(handle: $handle) {\n      id\n      title\n      description\n      descriptionHtml\n      totalInventory\n      images(first: 10) {\n        edges {\n          node {\n            id\n            url\n            altText\n          }\n        }\n      }\n      variants(first: 100) {\n        edges {\n          node {\n            id\n            title\n            price {\n              amount\n              currencyCode\n            }\n            compareAtPrice {\n              amount\n              currencyCode\n            }\n            quantityAvailable\n          }\n        }\n      }\n    }\n  }\n": types.GetProductDocument,
-    "\n  query GetProductSEO($handle: String!) {\n    product(handle: $handle) {\n      seo {\n        description\n        title\n      }\n      description\n      title\n    }\n  }\n": types.GetProductSeoDocument,
+    "\n  query GetProductSEO($handle: String!) {\n    product(handle: $handle) {\n      id\n      seo {\n        description\n        title\n      }\n      description\n      title\n    }\n  }\n": types.GetProductSeoDocument,
 };
 
 /**
@@ -46,7 +46,7 @@ export function graphql(source: "\n  query GetCollection($handle: String!, $firs
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query GetCollectionSEO($handle: String!) {\n    collection(handle: $handle) {\n      seo {\n        description\n        title\n      }\n      description\n      title\n    }\n  }\n"): (typeof documents)["\n  query GetCollectionSEO($handle: String!) {\n    collection(handle: $handle) {\n      seo {\n        description\n        title\n      }\n      description\n      title\n    }\n  }\n"];
+export function graphql(source: "\n  query GetCollectionSEO($handle: String!) {\n    collection(handle: $handle) {\n      id\n      seo {\n        description\n        title\n      }\n      description\n      title\n    }\n  }\n"): (typeof documents)["\n  query GetCollectionSEO($handle: String!) {\n    collection(handle: $handle) {\n      id\n      seo {\n        description\n        title\n      }\n      description\n      title\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -54,7 +54,7 @@ export function graphql(source: "\n  query GetProduct($handle: String!) {\n    p
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query GetProductSEO($handle: String!) {\n    product(handle: $handle) {\n      seo {\n        description\n        title\n      }\n      description\n      title\n    }\n  }\n"): (typeof documents)["\n  query GetProductSEO($handle: String!) {\n    product(handle: $handle) {\n      seo {\n        description\n        title\n      }\n      description\n      title\n    }\n  }\n"];
+export function graphql(source: "\n  query GetProductSEO($handle: String!) {\n    product(handle: $handle) {\n      id\n      seo {\n        description\n        title\n      }\n      description\n      title\n    }\n  }\n"): (typeof documents)["\n  query GetProductSEO($handle: String!) {\n    product(handle: $handle) {\n      id\n      seo {\n        description\n        title\n      }\n      description\n      title\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
