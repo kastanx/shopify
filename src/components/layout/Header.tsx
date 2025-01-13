@@ -1,4 +1,4 @@
-import { GetCollectionsQuery } from "@/gql/graphql";
+import { GetCollectionsQuery } from "@/generated/graphql";
 import { GET_COLLECTIONS } from "@/graphql/queries";
 import { getClient } from "@/lib/apollo-client";
 import Link from "next/link";

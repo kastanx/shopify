@@ -1,5 +1,5 @@
 import Container from "@/components/layout/Container";
-import { GetCollectionsQuery } from "@/gql/graphql";
+import { GetCollectionsQuery } from "@/generated/graphql";
 import { GET_COLLECTIONS } from "@/graphql/queries";
 import { getClient } from "@/lib/apollo-client";
 import Image from "next/image";
