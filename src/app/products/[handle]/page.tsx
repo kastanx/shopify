@@ -1,6 +1,6 @@
 import Container from "@/components/layout/Container";
 import BackButton from "@/components/navigation/BackButton";
-import { GetProductQuery, GetProductSeoQuery } from "@/gql/graphql";
+import { GetProductQuery, GetProductSeoQuery } from "@/generated/graphql";
 import { GET_PRODUCT, GET_PRODUCT_SEO } from "@/graphql/queries";
 import { getClient } from "@/lib/apollo-client";
 import { formatPrice } from "@/util/formatPrice";

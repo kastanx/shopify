@@ -1,7 +1,7 @@
 import Container from "@/components/layout/Container";
 import BackButton from "@/components/navigation/BackButton";
 import Pagination from "@/components/ui/Pagination";
-import { GetCollectionQuery, GetCollectionSeoQuery } from "@/gql/graphql";
+import { GetCollectionQuery, GetCollectionSeoQuery } from "@/generated/graphql";
 import { GET_COLLECTION, GET_COLLECTION_SEO } from "@/graphql/queries";
 import { getClient } from "@/lib/apollo-client";
 import { formatPrice } from "@/util/formatPrice";

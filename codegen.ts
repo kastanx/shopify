@@ -23,7 +23,7 @@ const config: CodegenConfig = {
   },
   documents: ["src/**/*.tsx", "src/**/*.ts"],
   generates: {
-    "./src/gql/": {
+    "./src/generated/": {
       preset: "client",
       plugins: [],
     },
